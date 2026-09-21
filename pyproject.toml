@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mden-battery"
+version = "0.5.0"
+description = "Reproducible MDEN SOC-SOH joint estimation implementation"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "torch>=2.4",
+  "polars>=1.30",
+  "tqdm>=4.66",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+data = ["pyarrow>=14", "py7zr>=0.21"]
+notebook = ["ipykernel>=6", "nbformat>=5", "nbclient>=0.10", "matplotlib>=3.8", "tqdm>=4.66"]
+test = ["pytest>=8", "pytest-cov>=5"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mden_battery*"]
+exclude = ["tests*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 79
+target-version = "py310"

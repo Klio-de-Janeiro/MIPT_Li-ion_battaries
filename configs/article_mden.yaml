@@ -1,0 +1,54 @@
+# Восстановление опубликованных формул и рисунков. Это не конфиг авторов.
+model:
+  input_dim: 5
+  horizon: 8
+  soc_depth: 2
+  shared_depth: 4
+  soh_depth: 6
+  conv_rounds: 4
+  fem_residual: false       # Eq. 12 / Fig. 3: сумма ветвей, дополнительный x не показан
+  fem_activation: identity  # активации внутри FEM не опубликованы; буквальная цепь Conv
+  fem_dropout: 0.0
+  fft_mode: per_sample      # оси Avg не уточнены; прогноз независим от соседей batch
+  top_k: 4                 # далее: выбранные нами, не опубликованные гиперпараметры
+  fem_hidden_channels: 32
+  fem_groups: 4
+  fusion_hidden: 32
+  sequence_dim: 5
+  lstm_layers: 1
+  mamba_d_state: 16
+  mamba_d_conv: 4
+  mamba_expand: 2
+  mamba_backend: native
+  mamba_scan: parallel
+  mamba_layout: figure4
+  prediction_hidden: 32
+  dropout: 0.0
+
+data:
+  input_length: 32
+  horizon: 8
+  stride: 8
+  input_columns: [cycle, time_s, voltage_V, current_A, temperature_C]
+
+training:
+  batch_size: 512
+  epochs: 30
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  gradient_clip_norm: 1.0
+  patience: 7
+  seed: 42
+  monitor: balanced_rmse
+
+# Experimental physics regularization; coefficients are not tuned on KIT.
+physics:
+  charge_weight: 0.01
+  bounds_weight: 0.01
+  soh_smooth_weight: 0.0
+  interval_s: 30.0
+  rated_capacity_ah: 3.0
+  charge_sign: 1.0
+  residual_scale: 0.01
+  residual_tolerance: 0.002
+  soh_upper: 1.2

@@ -1,0 +1,120 @@
+{
+  "date": "2026-09-19",
+  "python": "3.12.14",
+  "device": "CPU",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "polars": "1.44.2",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "pytest": "9.1.1",
+    "matplotlib": "3.10.8",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "PyYAML": "6.0.3",
+    "tqdm": "4.70.1"
+  },
+  "pytest": {
+    "tests": 59,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2,
+    "passed": 57,
+    "seconds": 8.316
+  },
+  "notebook": {
+    "path": "04_train_v2_fixed.ipynb",
+    "total_cells": 52,
+    "executed_code_cells": 39,
+    "execution": "all code cells sequentially in one Python process",
+    "input": "synthetic LOG_AGE CSV: 8 files at 30s, 2 files at 2s",
+    "split_cells": {
+      "train": 6,
+      "val": 2,
+      "test": 2
+    },
+    "windows": {
+      "train": 66,
+      "val": 22,
+      "test": 22
+    },
+    "epochs": 1,
+    "batch": 8,
+    "outcome": "PASS",
+    "sha256": "87a3edbab8f8fa02230e590e6cab73633d37bbb1f483cc0b9a561e04346c9cda"
+  },
+  "artifacts_verified": [
+    "best_balanced.pt",
+    "best_joint.pt",
+    "best_soc.pt",
+    "best_soh.pt",
+    "history.json",
+    "last.pt",
+    "predictions_test.csv",
+    "predictions_test.png",
+    "predictions_train.csv",
+    "predictions_train.png",
+    "predictions_val.csv",
+    "predictions_val.png",
+    "test_horizons.csv",
+    "test_metrics.json",
+    "training_history.png",
+    "physics_target_check.json",
+    "data_recipe/manifest.csv",
+    "data_recipe/prepared_index.csv",
+    "data_recipe/scaler.json",
+    "data_recipe/preprocessing.json"
+  ],
+  "cli": {
+    "outcome": "PASS",
+    "epochs": 1,
+    "batch": 8,
+    "data": "10 synthetic CSV cells; physical loss enabled; cleanup enabled",
+    "device": "CPU"
+  },
+  "scope": {
+    "real_KIT_training": false,
+    "CUDA_or_T4": false,
+    "official_selective_scan_kernel": false,
+    "Jupyter_UI": false,
+    "synthetic_metrics_are_accuracy_claims": false
+  },
+  "important_limits": [
+    "The notebook was executed as Python cells, not through a live Jupyter UI.",
+    "No real KIT or MIT quality measurement was performed.",
+    "CUDA/AMP and the optional official Mamba kernel still need hardware validation.",
+    "The article does not fully specify FEM weighting, activations, hyperparameters or temporal head reduction.",
+    "Physics coefficients are experimental and not calibrated on real KIT data.",
+    "Synthetic smoke signals intentionally do not obey the charge equation; they test execution only.",
+    "The physics term constrains SOC differences using reference capacity; it does not learn a physical SOH degradation law.",
+    "Historical AUDIT/PIPELINE/GPU documents describe earlier versions; PHYSICS_AND_MODEL_REVIEW_RU.md specifies 0.5.0 changes."
+  ],
+  "gpu_optimization": {
+    "matrix_amp_allowed": false,
+    "raw_budget_selection_tested": true,
+    "full_model_and_parameter_gradient_equivalence_tested": true,
+    "cpu_bfloat16_batched_fusion_smoke": true,
+    "cuda_prefetch_tested": false,
+    "cuda_compilation_tested": false,
+    "gpu_speedup_measured": false,
+    "real_10gb_training_performed": false,
+    "model_parameters": 131635,
+    "loss_parameters": 12
+  },
+  "project_version": "0.5.0",
+  "physics_and_cleanup": {
+    "analytic_interval_mean_charge_cases": true,
+    "SOC_gradient_and_detached_reference_capacity": true,
+    "future_current_loss_only": true,
+    "loss_checkpoint_roundtrip_and_resume_guard": true,
+    "cache_generation_recreated_identically": true,
+    "in_process_and_cross_process_cache_locks": true,
+    "unknown_files_and_symlinks_preserved": true,
+    "Windows_lock_path_tested": false,
+    "optional_max_anchor_gap": true,
+    "notebook_final_cache_deleted": true,
+    "CLI_final_cache_deleted": true,
+    "real_KIT_physics_calibration": false,
+    "real_KIT_accuracy_improvement": false
+  }
+}

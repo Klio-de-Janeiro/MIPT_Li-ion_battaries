@@ -1,0 +1,9 @@
+{
+  "scan_batch_8_serial_ms": 4.2466200000035315,
+  "scan_batch_8_parallel_ms": 2.713944999868545,
+  "scan_batch_64_serial_ms": 78.39060699984657,
+  "scan_batch_64_parallel_ms": 154.224695000039,
+  "model_parameters": 131635,
+  "device": "CPU",
+  "torch": "2.14.0+cpu"
+}
